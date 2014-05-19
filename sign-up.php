@@ -2,7 +2,7 @@
 <!-- <script src="assets/javascripts/bootstrap.min.js"></script> -->
 <script src="http://199.195.192.136:3000/assets/fq.js"></script>
 <?php include 'fw_open.html'; ?>
-<?php include 'fw_top_nav.html'; ?> 
+<?php include 'fw_top_nav.php'; ?> 
 <div class="container">
   <div class="panel">
     <div class="panel-body">
@@ -131,9 +131,9 @@ console.log("sending user: "+JSON.stringify(user_data));
             dataType: 'json',
 //            cache: false,
             async: false,
-            success: function(response) {
-                    window.location.href = "index-logged-in.php";
-                }
+//            success: function(response) {
+//                    window.location.href = "dashboard.php";
+//                }
         });
       //window.location.href = "index-logged-in.php";
     }
@@ -159,6 +159,7 @@ console.log("sending user: "+JSON.stringify(user_data));
         });
  
     console.log("fq_login: api_results - "+JSON.stringify(api_results));
+    window.location.href = "dashboard.php";
   }
 
   $( "#signUpSubmit" )

@@ -1,5 +1,5 @@
 <?php include 'fw_open.html'; ?>
-<?php include 'fw_top_nav.html'; ?> 
+<?php include 'fw_top_nav.php'; ?> 
 <div class="container">
      <div class="panel">
 		<div class="panel-body">
