@@ -22,13 +22,13 @@
 
                 <!-- NOTIFICATIONS -->
                 
-                <!-- Javascript -->
+                <!-- Javascript 
                 <script>
                   init.push(function () {
                     $('#main-navbar-notifications').slimScroll({ height: 250 });
                   });
                 </script>
-                <!-- / Javascript -->
+                / Javascript -->
 
                 <div class="dropdown-menu widget-notifications no-padding" style="width: 300px">
                   <div class="notifications-list" id="main-navbar-notifications">
@@ -64,13 +64,13 @@
 
                 <!-- MESSAGES -->
                 
-                <!-- Javascript -->
+                <!-- Javascript
                 <script>
                   init.push(function () {
                     $('#main-navbar-messages').slimScroll({ height: 250 });
                   });
                 </script>
-                <!-- / Javascript -->
+                / Javascript -->
 
                 <div class="dropdown-menu widget-messages-alt no-padding" style="width: 300px;">
                   <div class="messages-list" id="main-navbar-messages">
