@@ -183,11 +183,30 @@
 
 <!-- All below added by LS -->
 <script>
-  display_trainers = function(data) {
-    console.log("display_trainers data: "+JSON.stringify(data));
+
+  check_log_in = function(redir_page) {
+    if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "") {
+      console.log("check_log_in sessionStorage.token: "+JSON.stringify(sessionStorage.token)+ " ");
+      window.location.href = redir_page;
+    }
+  }
+
+  document.onload = check_log_in("sign-up.php");
+
+  store_trainers= function(data) {
+    sessionStorage.trainers = JSON.stringify(data);
+    console.log("here:"+JSON.stringify(sessionStorage.trainers));
+    display_trainers();
+  }
+
+  display_trainers = function() {
+    console.log("display_trainers:"+JSON.stringify(sessionStorage.trainers));
+    data = JSON.parse(sessionStorage.trainers);
+    console.log("display_trainers data: "+JSON.stringify(data)+" length data: "+data.length);
+    if(data.length > 0) $("#trainers").html("");
     $.each(data, function( index, value ) {
         console.log( index + ": " + JSON.stringify(value) );
-	$("#trainers").html("<div class=\"col-xs-4\"> <div class=\"panel panel-light panel-body-colorful widget-profile widget-profile-centered\"> <div class=\"panel-heading\"> <img src=\"assets/images/pixel-admin/avatar.png\" alt=\"\" class=\"widget-profile-avatar\"> <div class=\"widget-profile-header\"> <span>"+value.name+"</span><br>"+value.bio+"</div> </div> <div class=\"list-group\"> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-user list-group-icon\"></i>View Profile</a> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-calendar list-group-icon\"></i>Schedule Session</a> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-envelope-o list-group-icon\"></i>Contact</a> </div> </div> </div>");
+	$("#trainers").append("<div class=\"col-xs-4\"> <div class=\"panel panel-light panel-body-colorful widget-profile widget-profile-centered\"> <div class=\"panel-heading\"> <img src=\"assets/images/pixel-admin/avatar.png\" alt=\"\" class=\"widget-profile-avatar\"> <div class=\"widget-profile-header\"> <span>"+value.name+"</span><br>"+value.bio+"</div> </div> <div class=\"list-group\"> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-user list-group-icon\"></i>View Profile</a> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-calendar list-group-icon\"></i>Schedule Session</a> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-envelope-o list-group-icon\"></i>Contact</a> </div> </div> </div>");
 	//$("#trainers").load("demo_trainer_profile.html");
     });
   }
@@ -201,7 +220,7 @@
             //beforeSend : function(req) {
             //    req.setRequestHeader(‘Token’, sessionStorage.token);
             //},
-            success: display_trainers,
+            success: store_trainers,
             error: display_trainers
         });
  
