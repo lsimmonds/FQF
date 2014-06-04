@@ -46,9 +46,9 @@
               <div class="panel-heading-controls">
                 <ul class="pagination pagination-xs">
                   <li><a href="#">«</a></li>
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
+                  <li class="active"><a class="teacherSet">1</a></li>
+                  <li><a class="teacherSet">2</a></li>
+                  <li><a class="teacherSet">3</a></li>
                   <li><a href="#">»</a></li>
                 </ul>
               </div>
@@ -196,19 +196,26 @@
   store_trainers= function(data) {
     sessionStorage.trainers = JSON.stringify(data);
     console.log("here:"+JSON.stringify(sessionStorage.trainers));
-    display_trainers();
+    display_trainers(1);
   }
 
-  display_trainers = function() {
-    console.log("display_trainers:"+JSON.stringify(sessionStorage.trainers));
+  display_trainers = function(set_number) {
     data = JSON.parse(sessionStorage.trainers);
-    console.log("display_trainers data: "+JSON.stringify(data)+" length data: "+data.length);
-    if(data.length > 0) $("#trainers").html("");
-    $.each(data, function( index, value ) {
+    end = (set_number*3)-1;
+    start = end-2;
+    if(data.length > start) {
+      $("#trainers").html("");
+    }
+    else {
+      return;
+    }
+    if(end > data.length-1) end=data.length-1;
+    for (var index = start; index <= end; index++) {
+        value = data[index];
         console.log( index + ": " + JSON.stringify(value) );
 	$("#trainers").append("<div class=\"col-xs-4\"> <div class=\"panel panel-light panel-body-colorful widget-profile widget-profile-centered\"> <div class=\"panel-heading\"> <img src=\"assets/images/pixel-admin/avatar.png\" alt=\"\" class=\"widget-profile-avatar\"> <div class=\"widget-profile-header\"> <span>"+value.name+"</span><br>"+value.bio+"</div> </div> <div class=\"list-group\"> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-user list-group-icon\"></i>View Profile</a> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-calendar list-group-icon\"></i>Schedule Session</a> <a href=\"#\" class=\"list-group-item\"><i class=\"fa fa-envelope-o list-group-icon\"></i>Contact</a> </div> </div> </div>");
 	//$("#trainers").load("demo_trainer_profile.html");
-    });
+    }
   }
 
   fq_trainer = function() {
@@ -227,6 +234,14 @@
     console.log("fq_trainer: api_results - "+JSON.stringify(api_results));
   }
 
+  trainer_set = function(event) {
+    $(".active").removeClass("active");
+    event.target.parentNode.className="active";
+    display_trainers(event.target.innerHTML);
+  }
+
    $(document).ready(fq_trainer);
+
+   $(".teacherSet").click(trainer_set);
 
 </script>

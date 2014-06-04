@@ -44,7 +44,7 @@
 						</div>
                         <hr />
                                                 <p>Please select your trainer:</p>
-							<select class="form-control form-group-margin">
+							<select id="trainers" class="form-control form-group-margin">
 										<option>Trainer Name</option>
 										<option>Trainer Name</option>
 										<option>Trainer Name</option>
@@ -67,7 +67,8 @@
 									</div>
                         <hr />
                         <div class="btn-group btn-group-justified">
-							<a href="schedule_session_2.php" class="btn">Find a Time</a>
+							<!--<a href="schedule_session_2.php" class="btn">Find a Time</a>-->
+                  <a type="a" class="btn btn-primary btn-lg btn-block" id="findATime" >Find A Time</a>
 						</div>
 
 					</div>
@@ -85,3 +86,68 @@
 
 <?php include 'fw_footer.html'; ?>
 <?php include 'fw_close.html'; ?>
+
+<!-- All below added by LS -->
+<script>
+
+  check_log_in = function(redir_page) {
+    if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "") {
+      console.log("check_log_in sessionStorage.token: "+JSON.stringify(sessionStorage.token)+ " ");
+      window.location.href = redir_page;
+    }
+  }
+
+  document.onload = check_log_in("sign-up.php");
+
+  get_trainers = function() {
+    if(typeof(sessionStorage) =='undefined' || sessionStorage.trainers == null || sessionStorage.trainers == "") {
+      sessionStorage.trainers = JSON.stringify(data);
+      console.log("here:"+JSON.stringify(sessionStorage.trainers));
+      fq_trainer();
+    }
+    else {
+      display_trainers();
+    }
+  }
+
+  display_trainers = function() {
+    data = JSON.parse(sessionStorage.trainers);
+    if(data.length > 0) {
+      $("#trainers").empty();
+    }
+    else {
+      return;
+    }
+    for (var index = 0; index < data.length; index++) {
+        console.log( index + ": " + JSON.stringify(data[index]) );
+	$("#trainers").append("<option value='" + data[index].id + "'>" + data[index].name + "</option>");
+    }
+  }
+
+  fq_trainer = function() {
+    console.log("fq_trainer:");
+    api_results = $.ajax({
+            type: "GET",
+            url: "http://199.195.192.136:3000/api/teachers?token="+sessionStorage.token+"&email="+sessionStorage.email,
+            async: true,
+            //beforeSend : function(req) {
+            //    req.setRequestHeader(‘Token’, sessionStorage.token);
+            //},
+            success: display_trainers,
+            error: display_trainers
+        });
+ 
+    console.log("fq_trainer: api_results - "+JSON.stringify(api_results));
+  }
+
+//  trainer_set = function(event) {
+//    $(".active").removeClass("active");
+//    event.target.parentNode.className="active";
+//    display_trainers(event.target.innerHTML);
+//  }
+
+   $(document).ready(get_trainers);
+
+//   $(".teacherSet").click(trainer_set);
+
+</script>
