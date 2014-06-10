@@ -40,11 +40,11 @@
 					<div class="panel-body">
                         Please select the date you'd like to schedule your session:
 						<div class="input-group date" id="bs-datepicker-component" style="padding-top: 10px;">
-							<input type="text" class="form-control" placeholder="Select Date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							<input type="text" id="session-date" class="form-control" placeholder="Select Date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 						</div>
                         <hr />
                                                 <p>Please select your trainer:</p>
-							<select id="trainers" class="form-control form-group-margin">
+							<select id="session-trainer" class="form-control form-group-margin">
 										<option>Trainer Name</option>
 										<option>Trainer Name</option>
 										<option>Trainer Name</option>
@@ -55,13 +55,13 @@
                             <p>Please select a session length:</p>
 						<div class="radio" style="margin-top: 0;">
 										<label>
-											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="" class="px">
+											<input type="radio" name="session-length" id="optionsRadios1" value="30" checked="" class="px">
 											<span class="lbl">30 minutes</span>
 										</label>
 									</div> <!-- / .radio -->
 									<div class="radio" style="margin-bottom: 0;">
 										<label>
-											<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" class="px">
+											<input type="radio" name="session-length" id="optionsRadios2" value="60" class="px">
 											<span class="lbl">60 minutes</span>
 										</label>
 									</div>
@@ -113,14 +113,14 @@
   display_trainers = function() {
     data = JSON.parse(sessionStorage.trainers);
     if(data.length > 0) {
-      $("#trainers").empty();
+      $("#session-trainer").empty();
     }
     else {
       return;
     }
     for (var index = 0; index < data.length; index++) {
         console.log( index + ": " + JSON.stringify(data[index]) );
-	$("#trainers").append("<option value='" + data[index].id + "'>" + data[index].name + "</option>");
+	$("#session-trainer").append("<option value='" + data[index].id + "'>" + data[index].name + "</option>");
     }
   }
 
@@ -140,6 +140,20 @@
     console.log("fq_trainer: api_results - "+JSON.stringify(api_results));
   }
 
+  begin_session_gathering = function() {
+    console.log("#session-date: "+$("#session-date").val());
+    console.log("#session-trainer: "+$("#session-trainer").val());
+    console.log("input:radio[name=session-length]:checked: "+$("input:radio[name=session-length]:checked").val());
+    day = $( "#session-date" ).val();
+    trainer = $( "#session-trainer" ).val();
+    length = $( "input:radio[name=session-length]:checked" ).val();
+    fqSessionData = '{"day": "'+day+'", "trainer": "'+trainer+'", "length": "'+length+'"}';
+    sessionStorage.sess1 = JSON.stringify(fqSessionData);
+    console.log("sesson1: "+JSON.stringify(sessionStorage.sess1));
+    window.location.href = "schedule_session_2.php";
+  }
+
+  $( "#findATime" ).click(begin_session_gathering);
 //  trainer_set = function(event) {
 //    $(".active").removeClass("active");
 //    event.target.parentNode.className="active";
