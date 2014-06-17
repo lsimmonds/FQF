@@ -13,7 +13,7 @@
 
           <div class="right clearfix">
             <ul class="nav navbar-nav pull-right right-navbar-nav">
-
+                            
                             <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-globe"></i>
@@ -38,23 +38,22 @@
                       <div class="notification-description">5 new members joined today.</div>
                       <div class="notification-ago">3h ago</div>
                       <div class="notification-icon fa fa-users bg-info"></div>
-                    </div> <!-- / .notification -->
+                    </div>
                                            <div class="notification">
                       <div class="notification-title text-warning">Account</div>
                       <div class="notification-description">Your balance is due</div>
                       <div class="notification-ago">6h ago</div>
                       <div class="notification-icon fa fa-warning bg-warning"></div>
-                    </div> <!-- / .notification -->
+                    </div>
                                                             <div class="notification">
                       <div class="notification-title text-success">System</div>
                       <div class="notification-description">You have updated your profile</div>
                       <div class="notification-ago">9h ago</div>
                       <div class="notification-icon fa fa-user bg-success"></div>
-                    </div> <!-- / .notification -->
-
-                  </div> <!-- / .notifications-list -->
+                    </div>
+                  </div>
                   <a href="#" class="notifications-link">MORE NOTIFICATIONS</a>
-                </div> <!-- / .dropdown-menu -->
+                </div>
               </li>
               <li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -128,7 +127,7 @@
 <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="debug">
               <i class="fa fa-bars"></i>
-              <span>Sitewide Nav<i class="caret"></i></span>
+              <span>Temp Nav<i class="caret"></i></span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="my-fitqik">
                 <li><a href="dashboard.php">Dashboard</a></li>
@@ -147,7 +146,7 @@
               <span>My FitQik <i class="caret"></i></span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="my-fitqik">
-                <li><a href="book.php">Book a Session</a></li>
+                <li><a href="schedule_session.php">Schedule a Session</a></li>
                 <li class="divider"></li>
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="schedule.php">Schedule</a></li>
@@ -155,10 +154,11 @@
                 <li><a href="profile.php">Profile</a></li>
               </ul>
             </li>
+
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
                   <img src="assets/images/pixel-admin/avatar.png" alt="">
-                  <span><?php !empty($_SESSION['user_name'])?print $_SESSION['user_name']:print "login" ?></span>
+                  <span><?php !empty($_SESSION['user_name'])?print $_SESSION['user_name']:print "Users Name" ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Profile <span class="label label-warning pull-right">new</span></a></li>
@@ -168,6 +168,9 @@
                   <li><a href="pages-signin.html"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
                 </ul>
               </li>
+                          <li>
+							<a href="login.php">Login</a>
+						</li>
             </ul> <!-- / .navbar-nav -->
           </div> <!-- / .right -->
         </div>
@@ -176,4 +179,4 @@
   </div> <!-- / #main-navbar -->
 <!-- /2. $END_MAIN_NAVIGATION -->
 </div>
-<div style="height:54px">&nbsp;</div>
+<div style="height:60px">&nbsp;</div>

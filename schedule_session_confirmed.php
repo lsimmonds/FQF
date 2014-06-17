@@ -24,7 +24,7 @@
      <div class="panel">
 		<div class="panel-body">
             <!-- Begin content here -->
-            <?php include 'fw_account_nav.html'; ?>
+            
             <div class="page-header">
                 <h1>Workout Confirmed</h1>
             </div>

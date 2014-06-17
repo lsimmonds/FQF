@@ -28,7 +28,7 @@
   padding-top: 6px;
 }
 .theme-white #main-navbar .navbar-header a {
-  color: #ffffff;
+  color: #666666;
 }
 .theme-white #main-navbar .navbar-header,
 .theme-white #main-navbar .navbar-collapse {
@@ -41,16 +41,16 @@
 .theme-white #main-navbar .dropdown > a,
 .theme-white #main-navbar .dropdown-menu > li > a,
 .theme-white #main-navbar .nav > li > a {
-  color: #ffffff;
+  color: #666666;
 }
 .theme-white #main-navbar .navbar-toggle {
-  color: #ffffff;
+  color: #666666;
 }
 .theme-white #main-navbar #main-menu-toggle {
-  color: #ffffff;
+  color: #666666;
 }
 .theme-white #main-navbar #main-menu-toggle .fa:before {
-  color: #ffffff;
+  color: #666666;
 }
 .theme-white #main-navbar li + li,
 .theme-white #main-navbar .nav + .nav,
@@ -64,8 +64,8 @@
   background: #e1e1e1;
 }
 .theme-white #main-navbar form.navbar-form {
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 10px 10px 5px #888888;
+  box-shadow: 10px 10px 5px #888888;
 }
 .theme-white #main-navbar form.navbar-form .form-control {
   background: #fff;
@@ -82,13 +82,13 @@
     border-top: none;
   }
   .theme-white #main-navbar .nav > li > a:hover {
-    background: #5ab46c ;
+    background: #f1f1f1 ;
   }
   .theme-white #main-navbar .dropdown.open > a {
     border-top: none;
     border-bottom: none;
     margin-top: 0;
-    background: #5ab46c;
+    background: #f1f1f1;
   }
   .theme-white #main-navbar .dropdown-menu {
     border-radius: 2px;
@@ -99,7 +99,7 @@
     color: #555555;
   }
   .theme-white #main-navbar .dropdown-menu > li > a:hover {
-    background: #f6f6f6;
+    background: #f1f1f1;
   }
 }
 .theme-white #main-menu-bg,

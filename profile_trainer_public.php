@@ -4,8 +4,7 @@
 <div class="container">
      <div class="panel">
 		<div class="panel-body">
-            <!-- Begin content here -->
-            <?php include 'fw_account_nav.html'; ?>         
+            <!-- Begin content here -->       
             
            		<div class="profile-full-name">
             <span class="text-slim"><span class="text-light-gray">Dave Trainer / </span>Trainer Public Profile Page</span>

@@ -24,7 +24,7 @@
      <div class="panel">
 		<div class="panel-body">
             <!-- Begin content here -->
-            <?php include 'fw_account_nav.html'; ?>
+            
             <div class="page-header">
                 <h1>Schedule a Workout</h1>
             </div>
@@ -39,15 +39,19 @@
 					</div>
 					<div class="panel-body">
                         Date:
-						<div style="padding-top: 10px;">
+						<div id="session-date" style="padding-top: 10px;">
 							<strong>Monday, 27th May, 2014</strong>
 						</div>
                         <hr />
+                                                <div id="session-trainer">
                                                 <p>Trainer:</p>
 														<strong>Trainer Name</strong>
+						</div>
                         <hr />
+                                                <div id="session-length">
                             <p>Session length:</p>
 						<strong>30 minutes</strong>
+						</div>
                         <hr />
                         <div class="btn-group btn-group-justified">
 							<a href="schedule_session.php" class="btn">Edit Details</a>
@@ -62,7 +66,7 @@
 					</div>
 					<div class="panel-body">
                         Time:
-						<div style="padding-top: 10px;">
+						<div id="session-time" style="padding-top: 10px;">
 							<strong>9:00 am</strong>
 						</div>
                         <hr />
@@ -103,3 +107,31 @@
 
 <?php include 'fw_footer.html'; ?>
 <?php include 'fw_close.html'; ?>
+
+<!-- All below added by LS -->
+<script>
+
+  check_log_in = function(redir_page) {
+    if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "") {
+      console.log("check_log_in sessionStorage.token: "+JSON.stringify(sessionStorage.token)+ " ");
+      window.location.href = redir_page;
+    }      
+  }
+
+  document.onload = check_log_in("sign-up.php");
+
+  var appointment;
+  display_appointment = function() {
+    appointment = JSON.parse(sessionStorage.appointment);
+    console.log("appointment: "+JSON.stringify(appointment));
+    m_date = moment(appointment.when);
+    $( "#session-date" ).html("<strong>"+m_date.format('dddd, Do MMMM YYYY')+"</strong>");
+    $( "#session-trainer" ).html("<p>Trainer:</p><strong>Trainer Name</strong>");
+    //$( "#session-length" ).text(sess1.length+" Minutes");
+    //$( "#session-time" ).text(type.name);
+  }
+
+  $(document).ready(display_appointment);
+
+</script>
+

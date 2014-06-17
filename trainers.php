@@ -4,7 +4,7 @@
      <div class="panel">
 		<div class="panel-body">
             <!-- Begin content here -->
-            <?php include 'fw_account_nav.html'; ?>
+            
             <div class="page-header">
                 <h1>Trainers</h1>
             </div>        

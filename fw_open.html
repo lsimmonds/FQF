@@ -23,5 +23,20 @@
 		<script src="assets/javascripts/ie.min.js"></script>
 	<![endif]-->
 </head>
+
+<script>
+// Javascript to enable link to tab
+var hash = document.location.hash;
+var prefix = "tab_";
+if (hash) {
+    $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+} 
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown', function (e) {
+    window.location.hash = e.target.hash.replace("#", "#" + prefix);
+});
+</script>
+
 <body class="theme-white no-main-menu page-profile">
 <div id="main-wrapper">

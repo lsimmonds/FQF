@@ -4,7 +4,6 @@
   <div class="panel">
     <div class="panel-body">
       <!-- Begin content here -->
-      <?php include 'fw_account_nav.html'; ?>
       <div class="page-header">
         <h1>My Dashboard</h1>
       </div>
@@ -18,7 +17,7 @@
               <p>You have no scheduled sessions. That's sad.</p>
               <p>Why don't you schedule a session now by clicking on the button below. One of our trainers will be happy to help you get moving.</p>
               <hr />
-              <button class="btn btn-outline btn-sm btn-labeled btn-success"><span class="btn-label icon fa fa-calendar"></span>Schedule a Session Now</button>
+              <a href="schedule_session.php"><button class="btn btn-outline btn-sm btn-labeled btn-success"><span class="btn-label icon fa fa-calendar"></span>Schedule a Session Now</button></a>
             </div>
           </div>
         </div>

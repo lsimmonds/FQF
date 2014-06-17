@@ -1,11 +1,11 @@
 <?php include 'fw_open.html'; ?>
 <?php include 'fw_top_nav.php'; ?>
+
 <body class="page-profile">
 <div class="container">
      <div class="panel">
 		<div class="panel-body">
             <!-- Begin content here -->
-            <?php include 'fw_account_nav.html'; ?>         
             
            		<div class="profile-full-name">
             <span class="text-slim"><span class="text-light-gray">Dave Trainer / </span>Trainer Profile Page</span>
@@ -78,6 +78,9 @@
 						<li>
 							<a href="#profile-tabs-appts" data-toggle="tab">Appointments</a>
 						</li>
+						<li>
+							<a href="#profile-tabs-availability" data-toggle="tab">Availability</a>
+						</li>
                     	<li>
 							<a href="#profile-tabs-profile" data-toggle="tab">Public Profile Settings</a>
 						</li>
@@ -93,22 +96,22 @@
 							<em>This is the page the trainer will see when they login to their profile. It has different options from the client profile. A trainer will also need a public profile which is what the clients / users will see when they're viewing a trainer. The trainer should have the ability to update their public profile from this section.</em>
 
 						</div>
-						<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-appts">
-							
-                            <?php include 'demo_profile_trainer_appts.html'; ?>
-                            
-						</div>
-                    						<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-profile">
-							
-                            <?php include 'demo_profile_trainer_public.html'; ?>
-                            
-						</div>
-                    						<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-equipment">
-							
-                           Coming Soon
+                        
+<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-appts">
+<?php include 'demo_profile_trainer_appts.html'; ?>
+</div>
+                        
+<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-availability">
+<?php include 'demo_profile_trainer_availability.html'; ?>
+</div>
 
-                            
-						</div>
+<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-profile">
+<?php include 'demo_profile_trainer_public.html'; ?>
+</div>
+
+<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-equipment">
+Coming Soon
+</div>
 
 					</div> <!-- / .tab-content -->
 				</div>
