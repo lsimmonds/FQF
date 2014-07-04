@@ -122,13 +122,15 @@
 
   var appointment;
   display_appointment = function() {
+    console.log("display_appointment: sessionStorage.trainer - "+JSON.stringify(sessionStorage.trainer));
     appointment = JSON.parse(sessionStorage.appointment);
+    trainer = JSON.parse(sessionStorage.trainer);
     console.log("appointment: "+JSON.stringify(appointment));
     m_date = moment(appointment.when);
     $( "#session-date" ).html("<strong>"+m_date.format('dddd, Do MMMM YYYY')+"</strong>");
-    $( "#session-trainer" ).html("<p>Trainer:</p><strong>Trainer Name</strong>");
-    //$( "#session-length" ).text(sess1.length+" Minutes");
-    //$( "#session-time" ).text(type.name);
+    $( "#session-trainer" ).html("<p>Trainer:</p><strong>"+trainer.name+"</strong>");
+    $( "#session-length" ).html("<p>Session length:</p><strong>"+appointment.length+" minutes</strong>");
+    $( "#session-time" ).html("<strong>"+m_date.format('h:mm a')+"</strong>");
   }
 
   $(document).ready(display_appointment);

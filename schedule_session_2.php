@@ -242,6 +242,8 @@
 	break;
       }
     }
+    sessionStorage.trainer = JSON.stringify(trainer);
+    sessionStorage.type = JSON.stringify(type);
     $( "#session-date" ).text(sess1.day);
     $( "#session-trainer" ).text(trainer.name);
     $( "#session-type" ).text(type.name);
@@ -259,7 +261,7 @@
         api_results = $.ajax({
           type: "POST",
           url: "http://199.195.192.136:3000/api/students?token="+sessionStorage.token+"&email="+sessionStorage.email,
-          data: JSON.stringify(student_data),
+          data: student_data,
           async: true,
           //beforeSend : function(req) {
           //    req.setRequestHeader(‘Token’, sessionStorage.token);
@@ -298,7 +300,7 @@
     window.location.href = "schedule_session_3.php";
   }
 
-  book_session = function() {
+  book_session = function(event) {
     console.log("book_session: "+JSON.stringify(sess1));
     var student = get_student();
     console.log("In book_session student: "+JSON.stringify(student));
@@ -306,17 +308,27 @@
     var arry = sess1.day.split("/");
     console.log("arry: "+JSON.stringify(arry));
     //year, mon, day, hour, min
-    var new_date = new Date(arry[2], arry[0], arry[1], event.target.id.substr(0,2),event.target.id.substr(2,2));
+    var new_date = new Date(arry[2], arry[0]-1, arry[1], event.target.id.substr(0,2),event.target.id.substr(2,2));
     console.log("new_date: "+new_date);
     var utc_date = new_date.toUTCString();
     console.log("utc_date: "+utc_date);
     //var appointment = { subject: { id: sess1.type }, student: [ { id: student.id } ], teacher: [ { id: sess1.trainer } ], when: utc_date };
     //var appointment_data = { "appointment": appointment, "token": sessionStorage.token, "email": sessionStorage.email };
     appointment_data = { "appointment": { "subject": { "id": sess1.type }, "student": [ { "id": student.id } ], "teacher": [ { "id": sess1.trainer } ], "when": utc_date, "length": sess1.length } };
-    console.log("appointment: "+appointment_data);
+    console.log("appointment data: "+JSON.stringify(appointment_data));
+    appointment_url = "http://199.195.192.136:3000/api/appointments?token="+sessionStorage.token+"&email="+sessionStorage.email;
+    if(typeof(sessionStorage) !='undefined') {
+      if(sessionStorage.appointment != null) {
+	appointment = JSON.parse(sessionStorage.appointment);
+	if(appointment.id != null) {
+	  appointment_url = "http://199.195.192.136:3000/api/appointments/"+appointment.id+"?token="+sessionStorage.token+"&email="+sessionStorage.email;
+	}
+      }
+    }
+
     api_results = $.ajax({
       type: "POST",
-      url: "http://199.195.192.136:3000/api/appointments?token="+sessionStorage.token+"&email="+sessionStorage.email,
+      url: appointment_url,
       data: appointment_data,
       async: true,
       success: display_appointment,

@@ -39,16 +39,24 @@
 					</div>
 					<div class="panel-body">
                         <p>Date:</p>
+						<div id="session-date" style="padding-top: 10px;">
 							<strong>Monday, 27th May, 2014</strong>
+						</div>
                         <hr />
+                                                <div id="session-time">
                                                 <p>Time:</p>
 							<strong>9:00am</strong>
+						</div>
                         <hr />
+                                                <div id="session-trainer">
                                                 <p>Trainer:</p>
 														<strong>Trainer Name</strong>
+                                                </div>
                         <hr />
+                                                <div id="session-length">
                             <p>Session length:</p>
 						<strong>30 minutes</strong>
+                                                </div>
 					</div>
 				</div>
                 </div>
@@ -79,3 +87,33 @@
 
 <?php include 'fw_footer.html'; ?>
 <?php include 'fw_close.html'; ?>
+
+<!-- All below added by LS -->
+<script>
+
+  check_log_in = function(redir_page) {
+    if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "") {
+      console.log("check_log_in sessionStorage.token: "+JSON.stringify(sessionStorage.token)+ " ");
+      window.location.href = redir_page;
+    }      
+  }
+
+  document.onload = check_log_in("sign-up.php");
+
+  var appointment;
+  display_appointment = function() {
+    console.log("display_appointment: sessionStorage.trainer - "+JSON.stringify(sessionStorage.trainer));
+    appointment = JSON.parse(sessionStorage.appointment);
+    trainer = JSON.parse(sessionStorage.trainer);
+    console.log("appointment: "+JSON.stringify(appointment));
+    m_date = moment(appointment.when);
+    $( "#session-date" ).html("<strong>"+m_date.format('dddd, Do MMMM YYYY')+"</strong>");
+    $( "#session-trainer" ).html("<p>Trainer:</p><strong>"+trainer.name+"</strong>");
+    $( "#session-length" ).html("<p>Session length:</p><strong>"+appointment.length+" minutes</strong>");
+    $( "#session-time" ).html("<strong>"+m_date.format('h:mm a')+"</strong>");
+  }
+
+  $(document).ready(display_appointment);
+
+</script>
+

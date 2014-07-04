@@ -71,13 +71,13 @@
                             <p>Please select a session length:</p>
             <div class="radio" style="margin-top: 0;">
                     <label>
-                      <input type="radio" name="session-length" id="optionsRadios1" value="30" checked="" class="px">
+                      <input type="radio" name="session-length" id="session-length-30" value="30" checked="" class="px">
                       <span class="lbl">30 minutes</span>
                     </label>
                   </div> <!-- / .radio -->
                   <div class="radio" style="margin-bottom: 0;">
                     <label>
-                      <input type="radio" name="session-length" id="optionsRadios2" value="60" class="px">
+                      <input type="radio" name="session-length" id="session-length-60" value="60" class="px">
                       <span class="lbl">60 minutes</span>
                     </label>
                   </div>
@@ -112,6 +112,9 @@
 
 <!-- All below added by LS -->
 <script>
+  var trainer;
+  var type;
+  var session1;
 
   check_log_in = function(redir_page) {
     if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "") {
@@ -124,16 +127,43 @@
 
   get_trainers = function() {
     if(typeof(sessionStorage) !='undefined') {
-      fq_trainer();
-    }
-    else {
-      display_trainers();
-    }
-    if(sessionStorage.types == null || sessionStorage.types == "") {
-      fq_type();
-    }
-    else {
-      display_types();
+      console.log("sessionStorage.appointment: "+sessionStorage.appointment);
+      if(sessionStorage.appointment != null) {
+	appointment = JSON.parse(sessionStorage.appointment);
+	if(appointment.when != null) {
+	  m_date = moment(sessionStorage.appointment.when);
+	  $("#session-date").val(m_date.format('MM/DD/YYYY'));
+	}
+	if(sessionStorage.trainer != null) {
+	  trainer = JSON.parse(sessionStorage.trainer);
+	  console.log("Got trainer: "+JSON.stringify(trainer));
+	  $("#session-trainer").val(trainer.id);
+	  $("#session-trainer").val(trainer.id).prop('selected', true);
+	}
+	if(sessionStorage.type != null) {
+	  type = JSON.parse(sessionStorage.type);
+	  console.log("Got type: "+JSON.stringify(type));
+	  $("#session-type").val(type.id);
+	}
+	if(sessionStorage.sess1 != null) {
+	  session1 = JSON.parse(JSON.parse(sessionStorage.sess1));
+	  console.log("Got session1: "+JSON.stringify(session1));
+	  radio_id = "#session-length-"+session1.length;
+	  $(radio_id).prop('checked', true);
+	}
+      }
+      if(sessionStorage.trainers == null || sessionStorage.trainers == "") {
+	fq_trainer();
+      }
+      else {
+	display_trainers();
+      }
+      if(sessionStorage.types == null || sessionStorage.types == "") {
+	fq_type();
+      }
+      else {
+	display_types();
+      }
     }
   }
 
@@ -147,7 +177,8 @@
     }
     for (var index = 0; index < data.length; index++) {
         console.log( index + ": " + JSON.stringify(data[index]) );
-        $("#session-trainer").append("<option value='" + data[index].id + "'>" + data[index].name + "</option>");
+	selected = (sessionStorage.trainer != null && trainer.id == data[index].id)?"selected":"";
+        $("#session-trainer").append("<option value='" + data[index].id + "' "+selected+">" + data[index].name + "</option>");
     }
   }
 
@@ -167,7 +198,8 @@
     }
     for (var index = 0; index < data.length; index++) {
       console.log( index + ": " + JSON.stringify(data[index]) );
-      $("#session-type").append("<option value='" + data[index].id + "'>" + data[index].name + "</option>");
+      selected = (sessionStorage.type != null && type.id == data[index].id)?"selected":"";
+      $("#session-type").append("<option value='" + data[index].id + "' "+selected+">" + data[index].name + "</option>");
     }
   }
 
