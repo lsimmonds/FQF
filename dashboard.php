@@ -184,13 +184,14 @@
 <script>
 
   check_log_in = function(redir_page) {
-    if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "") {
+    if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "" || sessionStorage.token == "undefined") {
       console.log("check_log_in sessionStorage.token: "+JSON.stringify(sessionStorage.token)+ " ");
       window.location.href = redir_page;
     }
+    console.log("check_log_in sessionStorage: "+JSON.stringify(sessionStorage)+ " ");
   }
 
-  document.onload = check_log_in("sign-up.php");
+  document.onload = check_log_in("login.php");
 
   store_trainers= function(data) {
     sessionStorage.trainers = JSON.stringify(data);

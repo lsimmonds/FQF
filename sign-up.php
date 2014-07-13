@@ -70,9 +70,21 @@
 <!-- All below added by LS -->
 <script>
 
-  after_signup = function (data) {
+  after_signup = function (result1, result2, result3) {
     //will return on success: {"id":11,"created_at":"2014-02-02T03:57:55.826Z","updated_at":"2014-02-02T03:57:55.842Z","creator_id":null,"updater_id":null,"email":"test18@leonsimmonds.com"}, typeof: object
     //will return on failure: {"readyState":4,"responseText":"{\"errors\":{\"email\":[\"has already been taken\"]}}","responseJSON":{"errors":{"email":["has already been taken"]}},"status":422,"statusText":"Unprocessable Entity "}, typeof: object
+    console.log("after_signup result1: "+JSON.stringify(result1)+", typeof: "+typeof result1);
+    console.log("after_signup result2: "+JSON.stringify(result2)+", typeof: "+typeof result2);
+    console.log("after_signup result3: "+JSON.stringify(result3)+", typeof: "+typeof result3);
+    if(typeof result3 == "object") {
+      data = result3;
+    }
+    else if (typeof result1 == "object") {
+      data = result1;
+    }
+    else {
+      sessionStorage.clear();
+    }
     console.log("after_signup: "+JSON.stringify(data)+", typeof: "+typeof data);
     if ( data.status >= 200 && data.status < 300 || data.status === 304 ) {
       $( "#inputNameMsg" ).toggle(false);
