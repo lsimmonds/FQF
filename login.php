@@ -55,6 +55,7 @@
   after_login = function (data) {
     console.log("after_login: "+JSON.stringify(data)+", typeof: "+typeof data);
     if ( !data.status || (data.status >= 200 && data.status < 300 || data.status === 304 )) {
+      sessionStorage.clear();
       console.log("success: "+JSON.stringify(data));
       sessionStorage.token=data.token;
       sessionStorage.email=data.email;

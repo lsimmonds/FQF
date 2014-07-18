@@ -153,7 +153,7 @@
 	</div>
 </div>
 
-<?php include 'fw_foter.html'; ?>
+<?php include 'fw_footer.html'; ?>
 <?php include 'fw_close.html'; ?>
 
 <!-- All below added by LS -->
@@ -184,13 +184,16 @@
   }
 
   display_trainer_map = function(sess_date) {
+    if(session_db_date) {
+      sess_date=session_db_date;
+    }
     console.log("display_trainer_map");
     data = JSON.parse(sessionStorage.trainer_map);
-    console.log("map data: "+JSON.stringify(data));
+    console.log("map data: "+JSON.stringify(data)+" type: "+typeof data+" type input: "+typeof sessionStorage.trainer_map);
     for(var hour = 0;hour <= 24;hour++) {
       for(var min = 0;min < 60;min=min+30) {
 	index = hour.toString().lpad("0",2)+min.toString().lpad("0",2);
-	console.log("Looking at index "+index);
+	console.log("Looking at index "+index+" hour: "+hour+" min: "+min+" sess_date: "+sess_date);
 	if(JSON.stringify(data[sess_date][index]) === "{}") {
 	  console.log("Got data["+sess_date+"]["+index+"]: "+JSON.stringify(data[sess_date][index]));
 	  $("#"+index).toggleClass("disabled",false);
@@ -199,7 +202,9 @@
 	  console.log("Index "+index+" is not set: "+JSON.stringify(data[sess_date][index]));
 	  $("#"+index).toggleClass("disabled",true);
 	}
+        console.log("End of min "+min);
       }
+      console.log("End of hour "+hour);
     }
   }
 
@@ -221,6 +226,7 @@
 
   var sess1;
   var trainer;
+  var session_db_date;
   get_sess1 = function() {
     sess1 = JSON.parse(JSON.parse(sessionStorage.sess1));
     console.log("sess1: "+JSON.stringify(sess1));
@@ -250,11 +256,14 @@
     $( "#session-type" ).text(type.name);
     $( "#session-length" ).text(sess1.length+" Minutes");
     console.log("Calling trainer_map("+trainer.id+","+sess1.day+")");
-    trainer_map(trainer.id,sess1.day);
+    var date_array = sess1.day.split("/");
+    session_db_date = date_array[2]+"-"+date_array[0]+"-"+date_array[1];
+    trainer_map(trainer.id,session_db_date);
   }
 
   get_student = function(data) {
     console.log("get_student: "+JSON.stringify(data));
+console.log("aaaaaaaaaa");
     if(typeof(data) != 'undefined') {
       if (data.message == "none") {
         console.log("fetching student from api");
@@ -274,10 +283,16 @@
       }
       else { //must have some real student data
         sessionStorage.student = JSON.stringify(data);
-	return JSON.parse(sessionStorage.student);
+	if(sessionStorage.mid_apt) {
+	  finish_book_session();
+	}
+	else {
+	  return JSON.parse(sessionStorage.student);
+	}
       }
     }
-    if(typeof(sessionStorage) == 'undefined' || sessionStorage.student == null || sessionStorage.student == "") {
+    else if(typeof(sessionStorage) == 'undefined' || sessionStorage.student == null || sessionStorage.student == "") {
+console.log("bbbbbbbbbb");
       console.log("get_student sessionStorage.student: "+JSON.stringify(sessionStorage.student)+ " ");
       api_results = $.ajax({
         type: "GET",
@@ -291,7 +306,14 @@
       });
     }
     else {
-      return JSON.parse(sessionStorage.student);
+console.log("sessionStorage.mid_apt: "+sessionStorage.mid_apt.toString());
+	if(sessionStorage.mid_apt) {
+console.log("finishing...");
+	  finish_book_session();
+	}
+	else {
+          return JSON.parse(sessionStorage.student);
+	}
     }
   }
 
@@ -301,15 +323,24 @@
     window.location.href = "schedule_session_3.php";
   }
 
-  book_session = function(event) {
-    console.log("book_session: "+JSON.stringify(sess1));
-    var student = get_student();
-    console.log("In book_session student: "+JSON.stringify(student));
+  start_book_session = function(event) {
+    console.log("start_book_session: "+JSON.stringify(sess1));
     console.log("event.target.id:val - "+JSON.stringify(event.target.id)+":"+event.target.text);
+    sessionStorage.mid_apt = true;
     var arry = sess1.day.split("/");
     console.log("arry: "+JSON.stringify(arry));
     //year, mon, day, hour, min
-    var new_date = new Date(arry[2], arry[0]-1, arry[1], event.target.id.substr(0,2),event.target.id.substr(2,2));
+    sessionStorage.target_time = new Date(arry[2], arry[0]-1, arry[1], event.target.id.substr(0,2),event.target.id.substr(2,2));
+    console.log("In start_book_session target_time: "+JSON.stringify(sessionStorage.target_time));
+    var student = get_student();
+  }
+
+  finish_book_session = function() {
+    student = JSON.parse(sessionStorage.student);
+    console.log("In finish_book_session student: "+JSON.stringify(student));
+    console.log("In finish_book_session student.id: "+student.id);
+    console.log("In finish_book_session target_time: "+JSON.stringify(sessionStorage.target_time));
+    var new_date = new Date(sessionStorage.target_time);
     console.log("new_date: "+new_date);
     var utc_date = new_date.toUTCString();
     console.log("utc_date: "+utc_date);
@@ -335,9 +366,10 @@
       success: display_appointment,
       error: function(data) {console.log("appointment fail: "+JSON.stringify(data));}
     });
+    sessionStorage.mid_apt = false;
   }
 
-  $( ".time_pick" ).click(book_session);
+  $( ".time_pick" ).click(start_book_session);
 
   $(document).ready(get_sess1);
 

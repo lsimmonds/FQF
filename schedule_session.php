@@ -128,7 +128,9 @@
 
   get_trainers = function() {
     if(typeof(sessionStorage) !='undefined') {
-      console.log("sessionStorage.appointment: "+sessionStorage.appointment);
+      console.log("sessionStorage: "+JSON.stringify(sessionStorage)+" type: "+typeof sessionStorage);
+      console.log("sessionStorage.trainer: "+sessionStorage.trainer+" type: "+typeof sessionStorage.trainer+" sessionStorage.trainer != null: "+(sessionStorage.trainer != null));
+      console.log("sessionStorage.appointment: "+sessionStorage.appointment+" type: "+typeof sessionStorage.appointment+" sessionStorage.appointment != null: "+(sessionStorage.appointment != null));
       if(sessionStorage.appointment != null) {
 	appointment = JSON.parse(sessionStorage.appointment);
 	if(appointment.when != null) {
@@ -136,10 +138,15 @@
 	  $("#session-date").val(m_date.format('MM/DD/YYYY'));
 	}
 	if(sessionStorage.trainer != null) {
+	  console.log(" type: "+typeof sessionStorage.trainer);
 	  trainer = JSON.parse(sessionStorage.trainer);
+	  console.log(" type: "+typeof trainer);
 	  console.log("Got trainer: "+JSON.stringify(trainer));
 	  $("#session-trainer").val(trainer.id);
 	  $("#session-trainer").val(trainer.id).prop('selected', true);
+	}
+	else {
+	  console.log("sessionStorage.trainer != null not true anymore? "+(sessionStorage.trainer != null));
 	}
 	if(sessionStorage.type != null) {
 	  type = JSON.parse(sessionStorage.type);
