@@ -193,18 +193,13 @@
     for(var hour = 0;hour <= 24;hour++) {
       for(var min = 0;min < 60;min=min+30) {
 	index = hour.toString().lpad("0",2)+min.toString().lpad("0",2);
-	console.log("Looking at index "+index+" hour: "+hour+" min: "+min+" sess_date: "+sess_date);
 	if(JSON.stringify(data[sess_date][index]) === "{}") {
-	  console.log("Got data["+sess_date+"]["+index+"]: "+JSON.stringify(data[sess_date][index]));
 	  $("#"+index).toggleClass("disabled",false);
 	}
 	else {
-	  console.log("Index "+index+" is not set: "+JSON.stringify(data[sess_date][index]));
 	  $("#"+index).toggleClass("disabled",true);
 	}
-        console.log("End of min "+min);
       }
-      console.log("End of hour "+hour);
     }
   }
 
@@ -262,8 +257,16 @@
   }
 
   get_student = function(data) {
+    if(typeof(sessionStorage) != 'undefined' && sessionStorage.student != null && sessionStorage.student != "") {
+      console.log("Have student already: "+JSON.stringify(sessionStorage.student));
+      if(sessionStorage.mid_apt) {
+        finish_book_session();
+      }
+      else {
+        return JSON.parse(sessionStorage.student);
+      }
+    }
     console.log("get_student: "+JSON.stringify(data));
-console.log("aaaaaaaaaa");
     if(typeof(data) != 'undefined') {
       if (data.message == "none") {
         console.log("fetching student from api");
@@ -292,7 +295,6 @@ console.log("aaaaaaaaaa");
       }
     }
     else if(typeof(sessionStorage) == 'undefined' || sessionStorage.student == null || sessionStorage.student == "") {
-console.log("bbbbbbbbbb");
       console.log("get_student sessionStorage.student: "+JSON.stringify(sessionStorage.student)+ " ");
       api_results = $.ajax({
         type: "GET",
@@ -306,9 +308,7 @@ console.log("bbbbbbbbbb");
       });
     }
     else {
-console.log("sessionStorage.mid_apt: "+sessionStorage.mid_apt.toString());
 	if(sessionStorage.mid_apt) {
-console.log("finishing...");
 	  finish_book_session();
 	}
 	else {

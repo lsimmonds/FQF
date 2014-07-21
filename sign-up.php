@@ -129,11 +129,7 @@
       sessionStorage.token=data.token;
       sessionStorage.email=data.email;
       sessionStorage.name=data.name;
-      //var user_data = { user: { name: data.name, email: data.email, token: data.token } };
       var user_data = { name: data.name, email: data.email, token: data.token };
-      //var user_data = "name="+data.name+"&email="+data.email+"&token="+data.token ;
-      //$.post("_set_user.php", user, function() { alert("set PHP session"); }, "json");
-      //$.post("_set_user.php", user, function() { window.location.href = "index-logged-in.php"; }, "json");
 console.log("sending user: "+JSON.stringify(user_data));
         $.ajax({
             type: "POST",

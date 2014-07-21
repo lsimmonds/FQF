@@ -60,7 +60,17 @@
       sessionStorage.token=data.token;
       sessionStorage.email=data.email;
       sessionStorage.name=data.name;
+      console.log("student? :" + (typeof data.student).toString());
+      console.log("teacher? :" + (typeof data.teacher).toString());
       var user_data = { name: data.name, email: data.email, token: data.token };
+      if(typeof data.student == "object") {
+        sessionStorage.student = JSON.stringify(data.student);
+	user_data.student = data.student;
+      }
+      if(typeof data.teacher == "object") {
+        sessionStorage.teacher = JSON.stringify(data.teacher);
+	user_data.teacher = data.teacher;
+      }
 console.log("sending user: "+JSON.stringify(user_data));
         $.ajax({
             type: "POST",
@@ -75,6 +85,7 @@ console.log("sending user: "+JSON.stringify(user_data));
       console.log("resp status msg: "+JSON.stringify(data.statusText));
       $( "#loginFailMsg" ).text("Login failed!").toggle(true);
     }
+    window.location.href = "dashboard.php";
   }
 
   fq_login = function(user_data) {
@@ -85,13 +96,11 @@ console.log("sending user: "+JSON.stringify(user_data));
             url: "http://199.195.192.136:3000/api/users/sign_in",
             data: login_data,
             dataType: 'json',
-            async: false,
+            async: true,
             success: after_login,
             error: after_login
         });
- 
     console.log("fq_login: api_results - "+JSON.stringify(api_results));
-    window.location.href = "dashboard.php";
   }
 
   $( "#loginSubmit" )
