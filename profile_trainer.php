@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(empty($_SESSION['teacher'])) {
+    header("Location: profile_trainer_public.php");
+    exit;
+  }
+?>
 <?php include 'fw_open.html'; ?>
 <?php include 'fw_top_nav.php'; ?>
 
