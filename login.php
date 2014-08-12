@@ -71,14 +71,14 @@
         sessionStorage.teacher = JSON.stringify(data.teacher);
 	user_data.teacher = data.teacher;
       }
-console.log("sending user: "+JSON.stringify(user_data));
-        $.ajax({
-            type: "POST",
-            url: "_set_user.php",
-            data: { 'user': JSON.stringify(user_data) },
-            dataType: 'json',
-            async: false,
-        });
+//console.log("sending user: "+JSON.stringify(user_data));
+//        $.ajax({
+//            type: "POST",
+//            url: "_set_user.php",
+//            data: { 'user': JSON.stringify(user_data) },
+//            dataType: 'json',
+//            async: false,
+//        });
     }
     else {
       console.log("resp status: "+JSON.stringify(data.status));
@@ -93,10 +93,12 @@ console.log("sending user: "+JSON.stringify(user_data));
     console.log("fq_login: login_data - "+JSON.stringify(login_data));
     api_results = $.ajax({
             type: "POST",
-            url: "http://199.195.192.136:3000/api/users/sign_in",
+            //url: "http://199.195.192.136:3000/api/users/sign_in",
+            url: "_set_user.php",
             data: login_data,
             dataType: 'json',
             async: true,
+            async: false,
             success: after_login,
             error: after_login
         });

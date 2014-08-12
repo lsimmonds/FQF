@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(!empty($_SESSION['teacher'])) {
+  if(!empty($_SESSION['teacher']) && (empty($_SESSION['is_admin']) || $_SESSION['is_admin'] != 1)) {
     header("Location: profile_trainer.php");
     exit;
   }

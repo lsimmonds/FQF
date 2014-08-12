@@ -129,21 +129,21 @@
       sessionStorage.token=data.token;
       sessionStorage.email=data.email;
       sessionStorage.name=data.name;
-      var user_data = { name: data.name, email: data.email, token: data.token };
-console.log("sending user: "+JSON.stringify(user_data));
-        $.ajax({
-            type: "POST",
-            url: "_set_user.php",
-            //contentType: "application/json; charset=utf-8",
-            data: { 'user': JSON.stringify(user_data) },
-            dataType: 'json',
-//            cache: false,
-            async: false,
-//            success: function(response) {
-//                    window.location.href = "dashboard.php";
-//                }
-        });
-      //window.location.href = "index-logged-in.php";
+//      var user_data = { name: data.name, email: data.email, token: data.token };
+//console.log("sending user: "+JSON.stringify(user_data));
+//        $.ajax({
+//            type: "POST",
+//            url: "_set_user.php",
+//            //contentType: "application/json; charset=utf-8",
+//            data: { 'user': JSON.stringify(user_data) },
+//            dataType: 'json',
+////            cache: false,
+//            async: false,
+////            success: function(response) {
+////                    window.location.href = "dashboard.php";
+////                }
+//        });
+//      //window.location.href = "index-logged-in.php";
     }
     else {
       console.log("resp status: "+JSON.stringify(data.status));
@@ -158,7 +158,8 @@ console.log("sending user: "+JSON.stringify(user_data));
     //api_results = myFQ.post("http://199.195.192.136:3000/api/users/sign_in", login_data, after_login);
     api_results = $.ajax({
             type: "POST",
-            url: "http://199.195.192.136:3000/api/users/sign_in",
+            //url: "http://199.195.192.136:3000/api/users/sign_in",
+            url: "_set_user.php",
             data: login_data,
             dataType: 'json',
             async: false,
