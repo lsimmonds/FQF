@@ -92,7 +92,11 @@
 						
                         <div class="widget-article-comments tab-pane panel no-padding no-border fade in active" id="profile-tabs-news">
 
-								<em>This is the page the clients see when they login and view their profile. They should have the ability to update settings, view appointments etc. from here. Also, if we extend the social element this will be a news feed area as well.</em>
+								<em>This is the page the clients see when they login and view their profile. They should have the ability to update settings, view appointments etc. from here. Also, if we extend the social element this will be a news feed area as well.</em><p></p>
+							
+							<p><strong>Upcoming Appointments</strong></p>
+								
+							<?php include 'demo_profile_user_appts.html'; ?>
 
 						</div>
 						<div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-goals">

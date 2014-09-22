@@ -83,13 +83,13 @@
 							<a href="#profile-tabs-news" data-toggle="tab">News Feed</a>
 						</li>
 						<li>
-							<a href="#profile-tabs-appts" data-toggle="tab">Appointments</a>
+							<a href="#profile-tabs-appts" data-toggle="tab" id="app-tab">Appointments</a>
 						</li>
 						<li>
 							<a href="#profile-tabs-availability" data-toggle="tab">Availability</a>
 						</li>
                     	<li>
-							<a href="#profile-tabs-profile" data-toggle="tab">Public Profile Settings</a>
+							<a href="#profile-tabs-profile" data-toggle="tab" id="pub-tab">Public Profile Settings</a>
 						</li>
                         <li>
 							<a href="#profile-tabs-equipment" data-toggle="tab">Billing</a>
@@ -105,7 +105,14 @@
 						</div>
                         
 <div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-appts">
+<!-- All below added by LS -->
+<script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
+
+  <script> var tappointments; </script>
 <?php include 'demo_profile_trainer_appts.html'; ?>
+  <script>
+  $("#app-tab").click(function() {display_tappointments();});
+  </script>
 </div>
                         
 <div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-availability">
@@ -114,6 +121,9 @@
 
 <div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-profile">
 <?php include 'demo_profile_trainer_public.html'; ?>
+  <script>
+  $("#pub-tab").click(function() {fill_in_trainer();});
+  </script>
 </div>
 
 <div class="widget-article-comments tab-pane panel no-padding no-border fade in" id="profile-tabs-equipment">
@@ -134,3 +144,16 @@ Coming Soon
 </div>
 <?php include 'fw_footer.html'; ?>
 <?php include 'fw_close.html'; ?>
+
+<script>
+  var check_log_in = function(redir_page) {
+    if(typeof(sessionStorage) =='undefined' || sessionStorage.token == null || sessionStorage.token == "" || sessionStorage.token == "undefined") {
+      console.log("check_log_in sessionStorage.token: "+JSON.stringify(sessionStorage.token)+ " ");
+      window.location.href = redir_page;
+    }
+    console.log("check_log_in sessionStorage: "+JSON.stringify(sessionStorage)+ " ");
+  }
+
+  document.onload = check_log_in("login.php");
+</script>
+

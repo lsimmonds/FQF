@@ -3,7 +3,7 @@
 <p><em>Note: This page is supposed to be the inbox of appointments a trainer will see when they log on. The appointment should be a line item showing who and when the appointment is scheduled for. The trainer should have the option to accept an appointment, cancel / contact etc. The status labels should show the current situation.</em></p>
 <hr />
 
-<table class="table table-hover">
+<table class="table table-hover" id="appointments">
     <thead>
     <tr>
         <th>Client</th>
@@ -14,100 +14,236 @@
         <th>Status</th>
     </tr>
     </thead>
-    <tr>
-        <td>Dave Client</td>
-        <td>11-7-2014</td>
-        <td>11:30am</td>
-        <td>60 mins</td>          
-        <td>
-            <div class="btn-group">
-                <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Contact Client</a></li>
-                    <li><a href="#">Reschedule Session</a></li>
-                    <li><a href="#">Cancel Sessions</a></li>
-                </ul>
+      <tr>
+          <td>Dave Client</td>
+          <td>11-7-2014</td>
+          <td>11:30am</td>
+          <td>60 mins</td>          
+          <td>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Contact Client</a></li>
+                      <li><a href="#">Reschedule Session</a></li>
+                      <li><a href="#">Cancel Session</a></li>
+                  </ul>
+              </div>
+          </td>
+          <td><span class="label label-success">Approved</span></td>
+      </tr>
+      <tr>
+  
+          <td>Helen Client</td>
+          <td>5-7-2014</td>
+          <td>1:00pm</td>
+          <td>30 mins</td>          
+  
+          <td>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Contact Client</a></li>
+                      <li><a href="#">Reschedule Session</a></li>
+                      <li><a href="#">Cancel Session</a></li>
+                  </ul>
+			  </div>
+          </td>
+          <td><span class="label label-warning">Pending</span></td>
+      </tr>
+      <tr>
+
+          <td>Dave Client</td>
+          <td>28-6-2014</td>
+          <td>11:30am</td>
+          <td>90 mins</td>          
+  
+          <td>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Contact Client</a></li>
+                      <li><a href="#">Reschedule Session</a></li>
+                      <li><a href="#">Cancel Session</a></li>
+                  </ul>
+			  </div>
+          </td>
+          <td><span class="label label-success">Approved</span></td>
+      </tr> 
+      <tr>
+  
+          <td>Dave Client</td>
+          <td>21-6-2014</td>
+          <td>9:00am</td>
+          <td>30 mins</td>          
+  
+          <td>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Contact Client</a></li>
+                      <li><a href="#">Reschedule Session</a></li>
+                      <li><a href="#">Cancel Session</a></li>
+                  </ul>
+			  </div>
+          </td>
+          <td><span class="label label-danger">Declined</span></td>
+      </tr> 
+      <tr>
+  
+          <td>Helen Client</td>
+          <td>15-6-2014</td>
+          <td>12:00pm</td>
+          <td>60 mins</td>          
+  
+          <td>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Contact Client</a></li>
+                      <li><a href="#">Reschedule Session</a></li>
+                      <li><a href="#">Cancel Session</a></li>
+                  </ul>
 			</div>
-        </td>
-        <td><span class="label label-success">Approved</span></td>
-    </tr>
-    <tr>
-
-        <td>Helen Client</td>
-        <td>5-7-2014</td>
-        <td>1:00pm</td>
-        <td>30 mins</td>          
-
-        <td>
-            <div class="btn-group">
-                <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Contact Client</a></li>
-                    <li><a href="#">Reschedule Session</a></li>
-                    <li><a href="#">Cancel Sessions</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Accept Session</a></li>
-                </ul>
-			</div>
-        </td>
-        <td><span class="label label-warning">Pending</span></td>
-    </tr>
-    <tr>
-
-        <td>Dave Client</td>
-        <td>28-6-2014</td>
-        <td>11:30am</td>
-        <td>90 mins</td>          
-
-        <td>
-            <div class="btn-group">
-                <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Contact Client</a></li>
-                    <li><a href="#">Reschedule Session</a></li>
-                    <li><a href="#">Cancel Sessions</a></li>
-                </ul>
-			</div>
-        </td>
-        <td><span class="label label-success">Approved</span></td>
-    </tr> 
-    <tr>
-
-        <td>Dave Client</td>
-        <td>21-6-2014</td>
-        <td>9:00am</td>
-        <td>30 mins</td>          
-
-        <td>
-            <div class="btn-group">
-                <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Contact Client</a></li>
-                    <li><a href="#">Reschedule Session</a></li>
-                    <li><a href="#">Cancel Sessions</a></li>
-                </ul>
-			</div>
-        </td>
-        <td><span class="label label-danger">Declined</span></td>
-    </tr> 
-    <tr>
-
-        <td>Helen Client</td>
-        <td>15-6-2014</td>
-        <td>12:00pm</td>
-        <td>60 mins</td>          
-
-        <td>
-            <div class="btn-group">
-                <button type="button" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">Action&nbsp;<i class="fa fa-caret-down"></i></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Contact Client</a></li>
-                    <li><a href="#">Reschedule Session</a></li>
-                    <li><a href="#">Cancel Sessions</a></li>
-                </ul>
-			</div>
-        </td>
-        <td><span class="label label-success">Approved</span></td>
-    </tr>             
-</table>
+            </td>
+          <td><span class="label label-success">Approved</span></td>
+      </tr>             
+  </table>
 <div style="height:60px">&nbsp;</div>
+<script>
+  get_tappointments = function(data) {
+    console.log("In get_tappointments("+data+")");
+    var teacher_id;
+    if(typeof(tappointments) != 'undefined' && tappointments != null && tappointments != "") {
+      console.log("Just returning tappointments: "+JSON.stringify(tappointments));
+      if(sessionStorage.mid_tapt) {
+	display_tappointments();
+	return;
+      } else {
+	return tappointments;
+      }
+    }
+    if(typeof(sessionStorage) != 'undefined') {
+      console.log("Have session storage...");
+      if(sessionStorage.tappointments != null && sessionStorage.tappointments != "") {
+        console.log("Have appointments already: "+JSON.stringify(sessionStorage.tappointments));
+        console.log("sessionStorage.mid_tapt: "+sessionStorage.mid_tapt);
+        tappointments = JSON.parse(sessionStorage.tappointments);
+	if(sessionStorage.mid_tapt) {
+	  display_tappointments();
+	  return;
+	}
+	else {
+          return tappointments;
+	}
+      }
+      if(sessionStorage.teacher != null && sessionStorage.teacher != "") { // && sessionStorage.teacher.id != null && sessionStorage.teacher.id != "") 
+        console.log("Have session storage teacher");
+	teacher_id=JSON.parse(sessionStorage.teacher).id;
+      }
+    }
+    console.log("get_tappointments: "+JSON.stringify(data));
+    //Should get here by callback
+    if(typeof(data) != 'undefined') {
+      //this ia a callback
+      if( Array.isArray(data) ) {
+	//Apppointments callback
+        console.log("Got appointments: "+JSON.stringify(data));
+        sessionStorage.tappointments = JSON.stringify(data);
+        tappointments = JSON.parse(sessionStorage.tappointments);
+	if(sessionStorage.mid_tapt) {
+	  display_tappointments();
+	  return;
+	}
+	else {
+          return tappointments;
+	}
+      }
+      else {
+	//Teacher callback
+        console.log("Got a teacher: "+JSON.stringify(data));
+	sessionStorage.teacher = JSON.stringify(data);
+	teacher_id=data.id;
+      }
+    }
+    if(typeof(teacher_id) == 'undefined') {
+      //Need to get teacher
+      console.log("Getting a teacher... http://199.195.192.136:3000/api/my_teacher?token="+sessionStorage.token+"&email="+sessionStorage.email);
+      api_results = $.get("http://199.195.192.136:3000/api/my_teacher?token="+sessionStorage.token+"&email="+sessionStorage.email, get_tappointments,"json");
+      console.log("api_results: "+api_results);
+//      api_results = $.ajax({
+//        type: "GET",
+//        url: "http://199.195.192.136:3000/api/my_teacher?token="+sessionStorage.token+"&email="+sessionStorage.email,
+//        async: true,
+//        success: get_tappointments,
+//        error: function(data) {console.log("student fail: "+JSON.stringify(data));}
+//      });
+      return;
+    }
+    //If we got to here we do not have appointments in storage, but we do have our teacher_id
+    //Go ahead and fetch appointments from API
+    console.log("Getting a appointments for teacher :"+"http://199.195.192.136:3000/api/teachers/"+teacher_id+"/appointments?token="+sessionStorage.token+"&email="+sessionStorage.email);
+    api_results = $.get("http://199.195.192.136:3000/api/teachers/"+teacher_id+"/appointments?token="+sessionStorage.token+"&email="+sessionStorage.email,get_tappointments,"json");
+      console.log("api_results: "+api_results);
+//    api_results = $.ajax({
+//      type: "GET",
+//      url: "http://199.195.192.136:3000/api/teachers/"+teacher_id+"/appointments?token="+sessionStorage.token+"&email="+sessionStorage.email,
+//      async: true,
+//      success: get_tappointments,
+//      error: function(data) {console.log("appointment fail: "+JSON.stringify(data));}
+//    });
+      return;
+  }
+
+  display_tappointments = function(set_number) {
+    console.log("In display_tappointments("+set_number+")");
+    if(typeof(tappointments) == "undefined") {
+      sessionStorage.mid_tapt = true;
+      get_tappointments();
+    }
+    else {
+      console.log("tappointments not undef: "+tappointments);
+      sessionStorage.mid_tapt = false;
+    }
+    if(typeof(set_number) == "undefined") {
+      set_number=1;
+    }
+    console.log("In display_tappointments("+set_number+"): tappointments - "+tappointments);
+    set_size=8;
+    //appointments = get_tappointments();
+    end = (set_number*set_size)-1;
+    start = end-(set_size-1);
+    if(tappointments.length > start) {
+      $("#appointments").html("<thead><tr><th>Client</th><th>Date</th><th>Time</th><th>Length</th><th>&nbsp;</th><th>Status</th></tr></thead>");
+    }
+    else {
+      return;
+    }
+    if(end > tappointments.length-1) end=tappointments.length-1;
+    console.log("In display_tappointments start: "+start+", end: "+end);
+    for (var index = start; index <= end; index++) {
+	//2014-10-28T20:00:00.000Z
+	UTCDate = new Date(Date.parse(tappointments[index].when.toString()));
+	//console.log("localDate: "+JSON.parse(localDate));
+	var localDate = UTCDate.toString();
+	var prtStat = tappointments[index].status ? tappointments[index].status : "Pending";
+	var statLabel;
+        switch(prtStat) {
+          case "Pending":
+            statLabel="label-warning";
+            break;
+          case "Approved":
+            statLabel="label-success";
+            break;
+          case "Declined":
+            statLabel="label-danger";
+            break;
+          default:
+            statLabel="label-default";
+        } 
+	console.log("localDate s: "+localDate);
+	$("#appointments").append("<tr><td>"+tappointments[index].students[0].name+"</td><td>"+localDate.substring(4,10)+"</td><td>"+localDate.substring(16,21)+"</td><td>"+tappointments[index].length+" mins</td><td><div class=\"btn-group\"><button type=\"button\" class=\"btn btn-xs dropdown-toggle\" data-toggle=\"dropdown\">Action&nbsp;<i class=\"fa fa-caret-down\"></i></button><ul class=\"dropdown-menu\"><li><a href=\"#\">Approve Appointment</a></li><li><a href=\"#\">Contact Client</a></li><li><a href=\"#\">Reschedule Session</a></li><li><a href=\"#\">Cancel Session</a></li></ul></div></td><td><span class=\"label "+statLabel+"\">"+prtStat+"</span></td></tr>");
+    }
+  }
+
+  display_tappointments();
+</script> 

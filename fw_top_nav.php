@@ -14,11 +14,15 @@
           <div class="right clearfix">
             <ul class="nav navbar-nav pull-right right-navbar-nav">
                             
-                            <li class="dropdown notifications-menu">
+                           <!--
+                           
+                           <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-globe"></i>
                                 <span class="label label-success">3</span>
                             </a>
+                            
+                            -->
 
                 <!-- NOTIFICATIONS -->
                 
@@ -30,7 +34,7 @@
                 </script>
                 / Javascript -->
 
-                <div class="dropdown-menu widget-notifications no-padding" style="width: 300px">
+               <!-- <div class="dropdown-menu widget-notifications no-padding" style="width: 300px">
                   <div class="notifications-list" id="main-navbar-notifications">
 
                     <div class="notification">
@@ -60,7 +64,7 @@
                                 <i class="fa fa-envelope">&nbsp;</i>
                                 <span class="label label-success">5</span>
                             </a>
-
+							-->
                 <!-- MESSAGES -->
                 
                 <!-- Javascript
@@ -71,6 +75,8 @@
                 </script>
                 / Javascript -->
 
+
+<!--
                 <div class="dropdown-menu widget-messages-alt no-padding" style="width: 300px;">
                   <div class="messages-list" id="main-navbar-messages">
                     <div class="message">
@@ -81,7 +87,7 @@
                         &nbsp;&nbsp;·&nbsp;&nbsp;
                         2h ago
                       </div>
-                    </div> <!-- / .message -->
+                    </div>
                                                        <div class="message">
                       <img src="assets/images/pixel-admin/avatar.png" alt="" class="message-avatar">
                       <a href="#" class="message-subject">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
@@ -90,7 +96,7 @@
                         &nbsp;&nbsp;·&nbsp;&nbsp;
                         2h ago
                       </div>
-                    </div> <!-- / .message -->
+                    </div>
                                                             <div class="message">
                       <img src="assets/images/pixel-admin/avatar.png" alt="" class="message-avatar">
                       <a href="#" class="message-subject">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
@@ -99,7 +105,7 @@
                         &nbsp;&nbsp;·&nbsp;&nbsp;
                         2h ago
                       </div>
-                    </div> <!-- / .message -->
+                    </div>
                                                             <div class="message">
                       <img src="assets/images/pixel-admin/avatar.png" alt="" class="message-avatar">
                       <a href="#" class="message-subject">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
@@ -108,7 +114,7 @@
                         &nbsp;&nbsp;·&nbsp;&nbsp;
                         2h ago
                       </div>
-                    </div> <!-- / .message -->
+                    </div>
                                                             <div class="message">
                       <img src="assets/images/pixel-admin/avatar.png" alt="" class="message-avatar">
                       <a href="#" class="message-subject">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
@@ -117,13 +123,13 @@
                         &nbsp;&nbsp;·&nbsp;&nbsp;
                         2h ago
                       </div>
-                    </div> <!-- / .message -->
+                    </div>
 
-                  </div> <!-- / .messages-list -->
+                  </div>
                   <a href="#" class="messages-link">MORE MESSAGES</a>
-                </div> <!-- / .dropdown-menu -->
+                </div>
               </li>
-<!-- /3. $END_NAVBAR_ICON_BUTTONS -->
+<!-- End Messages Section -->
 <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="debug">
               <i class="fa fa-bars"></i>
